@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-space{
+    margin-right: 15px;
+}
+
+.loader {
+    background-color: rgb(25, 135, 84);
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.loader.hidden {
+    opacity: 0;
+}
+
+.loader {
+    font-size: 5rem;
+}
