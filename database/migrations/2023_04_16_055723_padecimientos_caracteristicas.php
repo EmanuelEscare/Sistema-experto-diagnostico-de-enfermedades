@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('padecimientos_sintomas', function (Blueprint $table) {
+        Schema::create('padecimientos_caracteristicas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sintoma_id')
-                ->references('id')->on('sintomas')
+            $table->foreignId('caracteristica_id')
+                ->references('id')->on('caracteristicas')
                 ->onDelete('cascade');
             $table->foreignId('padecimiento_id')
                 ->references('id')->on('padecimientos')
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('padecimientos_sintomas');
+        Schema::dropIfExists('padecimientos_caracteristicas');
     }
 };

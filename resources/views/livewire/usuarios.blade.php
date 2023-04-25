@@ -2,7 +2,15 @@
     {{-- Do your work, then step back. --}}
     <div class="rounded-4 p-4">
         <h3 class="">{{ __('Usuarios') }}</h3>
-
+        <br>
+        <div class="py-2">
+            <div class="input-group mb-3">
+                <input class="form-control form-control-lg" wire:model="query" wire:keyup="search" type="text" placeholder="">
+                <span class="input-group-text">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+            </div>
+        </div>
         <table class="table table-bordered table-hover table-striped mt-5">
             <thead class="border">
                 <tr>
@@ -35,10 +43,15 @@
                             </ul>
                         </td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-lg btn-warning"><i
+                            <button type="button" class="btn btn-lg btn-warning"> Editar <i
                                     class="fa-solid fa-pen-to-square"></i></button>
-                            <button type="button" class="btn btn-lg btn-danger">
-                                <i class="fa-solid fa-trash"></i></button>
+                                    
+                                        @if ($confirming === $user->id)
+                                            <button type="button" wire:click="delete({{ $user->id }})" class="btn btn-lg btn-danger fa-fade">¿Seguro?</button>
+                                        @else
+                                            <button type="button" wire:click="confirmDelete({{ $user->id }})" class="btn btn-lg btn-danger">Eliminar <i class="fa-solid fa-trash"></i></button>
+                                        @endif
+                                    
                         </td>
                     </tr>
                 @endforeach
@@ -50,4 +63,24 @@
             <button type="button" wire:click="nextPage" class="btn border-start"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
     </div>
+
+        {{-- Notification --}}
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="notification" class="toast align-items-center text-bg-success border-0" role="alert"
+                aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        {{$mesage_notification}}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            window.addEventListener('notification', event => {
+                $("#notification").toast('show');
+            })
+        </script>
 </div>

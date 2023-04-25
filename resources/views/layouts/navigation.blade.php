@@ -37,7 +37,7 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex text-decoration-none">
                     <x-nav-link :href="route('sintomas')" :active="request()->routeIs('sintomas')">
-                        {{ __('Síntomas') }}
+                        {{ __('Síntomas y signos') }}
                     </x-nav-link>
                 </div>
 

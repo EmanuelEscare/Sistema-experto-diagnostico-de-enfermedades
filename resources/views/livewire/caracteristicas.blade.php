@@ -1,25 +1,28 @@
 <div>
     {{-- Do your work, then step back. --}}
     <div class="rounded-4 p-4">
-        <h3 class="">Síntomas</h3>
+        <h3 class="">Síntomas y signos</h3>
 
         <table class="table table-bordered table-hover table-striped mt-5">
             <thead class="border">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Tipo</th>
                     <th scope="col">Acción</th>
 
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                @foreach ($sintomas as $sintoma)
+                @foreach ($caracteristicas as $caracteristica)
                     <tr>
-                        <th scope="row">{{ $sintoma->id }}</th>
+                        <th scope="row">{{ $caracteristica->id }}</th>
                         <td>
-                            {{ $sintoma->nombre }}
+                            {{ $caracteristica->nombre }}
                         </td>
-
+                        <td>
+                            {{ $caracteristica->tipo }}
+                        </td>
 
                         <td class="text-center">
                             <button type="button" class="btn btn-lg btn-warning"><i

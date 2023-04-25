@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sintomas', function (Blueprint $table) {
+        Schema::create('caracteristicas', function (Blueprint $table) {
             $table->id();
+            $table->enum('tipo', ['signo', 'síntoma'])->default('síntoma');
             $table->string('nombre');
             $table->timestamps();
         });
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sintomas');
+        Schema::dropIfExists('caracteristicas');
     }
 };
