@@ -29,6 +29,14 @@ Route::get('/pacientes', function () {
     return view('pacientes');
 })->middleware(['auth', 'verified'])->name('pacientes');
 
+Route::get('/citas', function () {
+    return view('citas');
+})->middleware(['auth', 'verified'])->name('citas');
+
+Route::get('/diagnosticar/{id}', function ($id) {
+    return view('diagnosticar')->with('cita_id', $id);
+})->middleware(['auth', 'verified'])->name('diagnosticar');
+
 Route::get('/padecimientos', function () {
     return view('padecimientos');
 })->middleware(['auth', 'verified'])->name('padecimientos');

@@ -30,6 +30,12 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex text-decoration-none">
+                    <x-nav-link :href="route('citas')" :active="request()->routeIs('citas')">
+                        {{ __('Citas') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex text-decoration-none">
                     <x-nav-link :href="route('padecimientos')" :active="request()->routeIs('padecimientos')">
                         {{ __('Padecimientos') }}
                     </x-nav-link>

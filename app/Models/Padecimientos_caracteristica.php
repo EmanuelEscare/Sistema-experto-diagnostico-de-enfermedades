@@ -9,6 +9,11 @@ class Padecimientos_caracteristica extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'padecimiento_id',
+        'caracteristica_id',
+    ];
+
     public function caracteristicas()
     {
         return $this->belongsTo(Caracteristica::class);

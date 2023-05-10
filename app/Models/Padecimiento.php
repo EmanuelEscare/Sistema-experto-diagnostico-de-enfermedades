@@ -25,4 +25,9 @@ class Padecimiento extends Model
             'caracteristica_id'
         )->withCount('padecimientos_caracteristicas')->orderByDesc('padecimientos_caracteristicas_count');
     }
+
+    public function diagnostico()
+    {
+        return $this->hasOne(Diagnostico::class);
+    }
 }

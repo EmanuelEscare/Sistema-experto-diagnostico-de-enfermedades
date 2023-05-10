@@ -19,7 +19,7 @@ class pacientes extends Seeder
         Paciente::create([
             'nombre' => 'Sandra',
             'apellidos' => 'Cuevas',
-            'fecha_nacimiento' => '2020-10-01',
+            'fecha_nacimiento' => '1980-10-01',
             'email' => 'sandra@gmail.com',
             'telefono' => '3317009646',
             'sexo' => 'femenino'

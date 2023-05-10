@@ -34,23 +34,23 @@ class padecimientos extends Seeder
 
         // Define los síntomas comunes para las primeras cinco enfermedades
         $sintomasComunes = [
-            'Fiebre',
             'Tos seca',
             'Fatiga',
             'Dolor de cabeza',
             'Dolor de garganta',
             'Congestión nasal',
             'Dificultad para respirar',
-            'Dolor muscular'
+            'Dolor muscular',
+            'Tristeza y desesperanza',
+            'Náuseas'
         ];
 
         // Define los síntomas diferentes para las últimas cinco enfermedades
         $sintomasDiferentes = [
+            'Fiebre',
             'Presión arterial alta',
             'Niveles elevados de azúcar en la sangre',
             'Dolor en las articulaciones',
-            'Tristeza y desesperanza',
-            'Náuseas',
             'Pérdida de peso'
         ];
 
@@ -69,8 +69,15 @@ class padecimientos extends Seeder
             }
 
             foreach ($sintomas as $sintoma) {
+                if ($key < 5) {
+                    $type = 'síntoma';
+                } else {
+                    $type = 'signo';
+                }
+                
                 $caracteristica = Caracteristica::firstOrCreate([
-                    'nombre' => $sintoma
+                    'nombre' => $sintoma,
+                    'tipo' => $type
                 ]);
 
                 Padecimientos_caracteristica::create([

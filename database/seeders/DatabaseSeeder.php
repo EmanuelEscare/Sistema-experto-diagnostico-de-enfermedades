@@ -17,6 +17,5 @@ class DatabaseSeeder extends Seeder
         $this->call(roles::class);
         $this->call(padecimientos::class);
         $this->call(pacientes::class);
-        $this->call(usersrand::class);
     }
 }

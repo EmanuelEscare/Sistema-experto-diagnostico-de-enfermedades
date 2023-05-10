@@ -12,6 +12,8 @@ class Cita extends Model
     protected $fillable = [
         'user_id',
         'paciente_id',
+        'fecha',
+        'status',
     ];
 
     public function user()
@@ -22,5 +24,10 @@ class Cita extends Model
     public function paciente()
     {
         return $this->belongsTo(Paciente::class);
+    }
+
+    public function diagnostico()
+    {
+        return $this->hasOne(Diagnostico::class);
     }
 }

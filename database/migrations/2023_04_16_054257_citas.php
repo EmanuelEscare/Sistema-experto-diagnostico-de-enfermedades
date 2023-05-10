@@ -21,7 +21,8 @@ return new class extends Migration
             $table->foreignId('paciente_id')
                 ->references('id')->on('pacientes')
                 ->onDelete('cascade');
-            $table->date('fecha');
+            $table->timestamp('fecha');
+            $table->enum('status', ['pendiente','cancelada', 'terminada'])->default('pendiente');
             $table->timestamps();
         });
     }

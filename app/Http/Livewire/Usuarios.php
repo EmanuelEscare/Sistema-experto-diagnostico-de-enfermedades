@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 
 class Usuarios extends Component
 {
@@ -13,6 +14,27 @@ class Usuarios extends Component
     public $confirming;
     public $mesage_notification;
     public $query;
+
+    public $rol, $user, $user_model;
+
+
+    public function rules()
+    {
+        return [
+            'user.nombre' => 'required',
+            'user.email' => 'required|email',
+            'user.contraseña' => 'required|min:5',
+            'rol' => 'required',
+        ];
+    }
+
+    protected $messages = [
+        'user.nombre' => 'El campo nombre es requerido',
+        'user.email' => 'El campo email es requerido',
+        'user.contraseña' => 'El campo contraseña es requerido',
+        'rol' => 'El campo rol es requerido',
+    ];
+
 
     public function render()
     {
@@ -69,5 +91,90 @@ class Usuarios extends Component
     public function confirmDelete($id)
     {
         $this->confirming = $id;
+    }
+
+
+    public function formNewUser()
+    {
+        $this->clean();
+        $this->dispatchBrowserEvent('openModal');
+    }
+
+    public function saveNewUser()
+    {
+        $this->validate();
+        DB::beginTransaction();
+
+        try {
+            $user = new User;
+            $user->name = $this->user['nombre'];
+            $user->email = $this->user['email'];
+            $user->password = $this->user['contraseña'];
+
+            $user->save();
+            $user->assignRole($this->rol);
+
+            DB::commit();
+
+            $this->mesage_notification = "El usuario ha sido creado";
+            $this->dispatchBrowserEvent('notification');
+            $this->dispatchBrowserEvent('closeModal');
+            $this->clean();
+            return;
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            $this->mesage_notification = "Error: " . $e;
+            $this->dispatchBrowserEvent('notification');
+            $this->dispatchBrowserEvent('closeModal');
+            return;
+        }
+    }
+
+    public function modalUpdateUser($id)
+    {
+        $this->user_model = User::find($id);
+        $this->user['nombre'] = $this->user_model->name;
+        $this->user['email'] = $this->user_model->email;
+        $this->rol = "0";
+        $this->dispatchBrowserEvent('openModalUpdate');
+    }
+
+    public function updateUser()
+    {
+        $this->validate();
+        DB::beginTransaction();
+        try {
+            $this->user_model->name = $this->user['nombre'];
+            $this->user_model->email = $this->user['email'];
+            $this->user_model->password = $this->user['contraseña'];
+
+            $this->user_model->save();
+
+            DB::commit();
+
+            $this->mesage_notification = "El usuario ha sido editado";
+            $this->dispatchBrowserEvent('notification');
+            $this->dispatchBrowserEvent('closeModalUpdate');
+            $this->clean();
+            return;
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            $this->mesage_notification = "Error: " . $e;
+            $this->dispatchBrowserEvent('notification');
+            $this->dispatchBrowserEvent('closeModalUpdate');
+            return;
+        }
+    }
+
+
+    public function clean()
+    {
+        $this->user['nombre'] = "";
+        $this->user['email'] = "";
+        $this->user['contraseña'] = "";
+        $this->user_model = null;
+        return;
     }
 }

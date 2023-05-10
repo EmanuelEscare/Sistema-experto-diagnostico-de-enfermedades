@@ -25,10 +25,10 @@
                         </td>
 
                         <td class="text-center">
-                            <button type="button" class="btn btn-lg btn-warning"><i
+                            <button type="button" class="btn btn-lg btn-warning">Editar <i
                                     class="fa-solid fa-pen-to-square"></i></button>
                             <button type="button" class="btn btn-lg btn-danger">
-                                <i class="fa-solid fa-trash"></i></button>
+                                Eliminar <i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
                 @endforeach
