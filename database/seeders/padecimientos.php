@@ -121,6 +121,11 @@ class padecimientos extends Seeder
 
         Padecimientos_caracteristica::create([
             'padecimiento_id' => $neumonia->id,
+            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Tos con esputo'])->id,
+        ]);
+
+        Padecimientos_caracteristica::create([
+            'padecimiento_id' => $neumonia->id,
             'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Dificultad para respirar'])->id,
         ]);
 
@@ -255,7 +260,7 @@ class padecimientos extends Seeder
 
         Padecimientos_caracteristica::create([
             'padecimiento_id' => $fibrosisPulmonar->id,
-            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Tos seca y persistente'])->id,
+            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Tos seca'])->id,
         ]);
 
         Padecimientos_caracteristica::create([
@@ -295,6 +300,11 @@ class padecimientos extends Seeder
 
         Padecimientos_caracteristica::create([
             'padecimiento_id' => $tuberculosis->id,
+            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Tos con esputo'])->id,
+        ]);
+
+        Padecimientos_caracteristica::create([
+            'padecimiento_id' => $tuberculosis->id,
             'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Dolor en el pecho'])->id,
         ]);
 
@@ -327,7 +337,7 @@ class padecimientos extends Seeder
 
         Padecimientos_caracteristica::create([
             'padecimiento_id' => $enfermedadPulmonarIntersticial->id,
-            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Tos seca y persistente'])->id,
+            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Tos seca'])->id,
         ]);
 
         Padecimientos_caracteristica::create([
