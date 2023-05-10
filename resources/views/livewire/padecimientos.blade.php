@@ -8,7 +8,7 @@
             </div>
             <div class="col-lg-5">
                 <div class="d-grid gap-2 d-md-block">
-                    <button class="btn  btn-lg btn-primary" wire:click="downloadPrologFile">Descargar archivo .pl</button>
+                    <button class="btn  btn-lg btn-primary" wire:click="downloadPrologFile">Descargar conocimiento</button>
                     <a class="btn btn-lg btn-dark" href="{{ asset('diagnosticar.pl') }}" download="">Descargar
                         prolog</a>
                 </div>
