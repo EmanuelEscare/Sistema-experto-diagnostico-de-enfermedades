@@ -14,12 +14,12 @@ class Padecimientos_caracteristica extends Model
         'caracteristica_id',
     ];
 
-    public function caracteristicas()
+    public function caracteristica()
     {
         return $this->belongsTo(Caracteristica::class);
     }
 
-    public function padecimientos()
+    public function padecimiento()
     {
         return $this->belongsTo(Padecimiento::class);
     }

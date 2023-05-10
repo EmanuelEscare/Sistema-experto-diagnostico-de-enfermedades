@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Caracteristica;
 use App\Models\Padecimiento;
 use App\Models\Padecimientos_caracteristica;
+use Illuminate\Http\Response;
 use Livewire\Component;
 
 class Padecimientos extends Component
@@ -87,24 +88,24 @@ class Padecimientos extends Component
         $this->render();
     }
 
-        // ----------------------------------
-    
+    // ----------------------------------
 
-        public function rules()
-        {
-            return [
-                'sintoma' => 'required',
-            ];
-        }
-    
-        public function agregarSintoma()
-        {
-            $this->validate();
-    
-            Padecimientos_caracteristica::create([
-                'padecimiento_id' => $this->padecimiento->id,
-                'caracteristica_id' => $this->sintoma,
-            ]);
+
+    public function rules()
+    {
+        return [
+            'sintoma' => 'required',
+        ];
+    }
+
+    public function agregarSintoma()
+    {
+        $this->validate();
+
+        Padecimientos_caracteristica::create([
+            'padecimiento_id' => $this->padecimiento->id,
+            'caracteristica_id' => $this->sintoma,
+        ]);
 
         $this->mesage_notification = "El síntoma/signo ha sido agregado";
         $this->dispatchBrowserEvent('notification');
@@ -115,5 +116,41 @@ class Padecimientos extends Component
                 ->from('padecimientos_caracteristicas')
                 ->where('padecimiento_id', $this->padecimiento->id);
         })->get();
+    }
+
+    public function downloadPrologFile()
+    {
+        // Generar el contenido del archivo .pl
+
+        // % Hechos
+        // enfermedad(gripe).
+        // enfermedad(resfriado).
+        // enfermedad(alergia).
+        // enfermedad(asma).
+
+        $padecimientos = Padecimiento::get();
+        $caracteristicas_bruto = Padecimientos_caracteristica::get();
+        $prologCode = "";
+
+        foreach ($padecimientos as $item) {
+            $prologCode = $prologCode.'enfermedad('.strtolower(str_replace(' ', '_',$item->nombre)).'). ';
         }
+
+        foreach ($caracteristicas_bruto as $item) {
+            $prologCode = $prologCode.'sintoma('.strtolower(str_replace(' ', '_',$item->padecimiento->nombre)).', '.strtolower(str_replace(' ', '_',$item->caracteristica->nombre)).'). ';
+        }
+
+
+        // Nombre del archivo .pl
+        $fileName = 'archivo.pl';
+
+        // Crear el archivo .pl en una ubicación temporal
+        $tempFilePath = tempnam(sys_get_temp_dir(), $fileName);
+        file_put_contents($tempFilePath, $prologCode);
+
+        // Descargar el archivo .pl
+        return response()->streamDownload(function () use ($tempFilePath) {
+            readfile($tempFilePath);
+        }, $fileName);
+    }
 }

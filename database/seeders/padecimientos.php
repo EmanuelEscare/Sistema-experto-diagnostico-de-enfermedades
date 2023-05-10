@@ -54,7 +54,7 @@ class padecimientos extends Seeder
 
         // Padecimiento: Gripe (influenza)
         $gripe = Padecimiento::create([
-            'nombre' => 'Gripe (influenza)',
+            'nombre' => 'Gripe influenza',
         ]);
 
         Padecimientos_caracteristica::create([
@@ -99,7 +99,7 @@ class padecimientos extends Seeder
 
         Padecimientos_caracteristica::create([
             'padecimiento_id' => $bronquitis->id,
-            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Tos persistente con esputo (flema)'])->id,
+            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Tos persistente con esputo flema'])->id,
         ]);
 
         Padecimientos_caracteristica::create([
@@ -116,7 +116,7 @@ class padecimientos extends Seeder
 
         Padecimientos_caracteristica::create([
             'padecimiento_id' => $neumonia->id,
-            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Tos con esputo (puede ser verde o amarillo)'])->id,
+            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Tos con esputo puede ser verde o amarillo'])->id,
         ]);
 
         Padecimientos_caracteristica::create([
@@ -156,7 +156,7 @@ class padecimientos extends Seeder
 
         Padecimientos_caracteristica::create([
             'padecimiento_id' => $asma->id,
-            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Sibilancias recurrentes (silbidos al respirar)'])->id,
+            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Sibilancias recurrentes silbidos al respirar'])->id,
         ]);
 
         Padecimientos_caracteristica::create([
@@ -171,7 +171,7 @@ class padecimientos extends Seeder
 
         Padecimientos_caracteristica::create([
             'padecimiento_id' => $asma->id,
-            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Tos, especialmente por la noche o temprano en la mañana'])->id,
+            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Tos especialmente por la noche o temprano en la mañana'])->id,
         ]);
 
         Padecimientos_caracteristica::create([
@@ -184,9 +184,9 @@ class padecimientos extends Seeder
             'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Toser o silbar después de una infección respiratoria'])->id,
         ]);
 
-        // Padecimiento: Enfermedad pulmonar obstructiva crónica (EPOC)
+        // Padecimiento: Enfermedad pulmonar obstructiva crónica EPOC
         $epoc = Padecimiento::create([
-            'nombre' => 'Enfermedad pulmonar obstructiva crónica (EPOC)',
+            'nombre' => 'Enfermedad pulmonar obstructiva crónica EPOC',
         ]);
 
         Padecimientos_caracteristica::create([
@@ -196,7 +196,7 @@ class padecimientos extends Seeder
 
         Padecimientos_caracteristica::create([
             'padecimiento_id' => $epoc->id,
-            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Dificultad para respirar, especialmente al exhalar'])->id,
+            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Dificultad para respirar especialmente al exhalar'])->id,
         ]);
 
         Padecimientos_caracteristica::create([
@@ -226,7 +226,7 @@ class padecimientos extends Seeder
 
         Padecimientos_caracteristica::create([
             'padecimiento_id' => $enfisema->id,
-            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Dificultad para respirar, especialmente al exhalar'])->id,
+            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Dificultad para respirar especialmente al exhalar'])->id,
         ]);
 
         Padecimientos_caracteristica::create([
@@ -260,7 +260,7 @@ class padecimientos extends Seeder
 
         Padecimientos_caracteristica::create([
             'padecimiento_id' => $fibrosisPulmonar->id,
-            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Dificultad para respirar, especialmente durante el ejercicio'])->id,
+            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Dificultad para respirar especialmente durante el ejercicio'])->id,
         ]);
 
         Padecimientos_caracteristica::create([
@@ -278,9 +278,9 @@ class padecimientos extends Seeder
             'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Opresión en el pecho'])->id,
         ]);
 
-        // Padecimiento: Tuberculosis (TB)
+        // Padecimiento: Tuberculosis TB
         $tuberculosis = Padecimiento::create([
-            'nombre' => 'Tuberculosis (TB)',
+            'nombre' => 'Tuberculosis TB',
         ]);
 
         Padecimientos_caracteristica::create([
@@ -290,7 +290,7 @@ class padecimientos extends Seeder
 
         Padecimientos_caracteristica::create([
             'padecimiento_id' => $tuberculosis->id,
-            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Tos con esputo (puede contener sangre)'])->id,
+            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Tos con esputo puede contener sangre'])->id,
         ]);
 
         Padecimientos_caracteristica::create([
@@ -332,7 +332,7 @@ class padecimientos extends Seeder
 
         Padecimientos_caracteristica::create([
             'padecimiento_id' => $enfermedadPulmonarIntersticial->id,
-            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Dificultad para respirar, especialmente durante el ejercicio'])->id,
+            'caracteristica_id' => Caracteristica::firstOrCreate(['nombre' => 'Dificultad para respirar especialmente durante el ejercicio'])->id,
         ]);
 
         Padecimientos_caracteristica::create([

@@ -1,7 +1,19 @@
 <div>
     {{-- Do your work, then step back. --}}
     <div class="rounded-4 p-4">
-        <h3 class="">Padecimientos</h3>
+
+        <div class="row">
+            <div class="col-lg-7">
+                <h3 class="">Padecimientos</h3>
+            </div>
+            <div class="col-lg-5">
+                <div class="d-grid gap-2 d-md-block">
+                    <button class="btn  btn-lg btn-primary" wire:click="downloadPrologFile">Descargar archivo .pl</button>
+                    <a class="btn btn-lg btn-dark" href="{{ asset('diagnosticar.pl') }}" download="">Descargar
+                        prolog</a>
+                </div>
+            </div>
+        </div>
 
         <table class="table table-bordered table-hover table-striped mt-5">
             <thead class="border">
@@ -108,9 +120,9 @@
                             <p>Síntomas/Signo</p>
                             <select wire:model="sintoma" class="form-select form-select-lg mb-3">
                                 <option selected>......</option>
-                               
+
                                 @foreach ($sintomas as $item)
-                                    <option value="{{$item->id}}">{{$item->nombre}}</option>
+                                    <option value="{{ $item->id }}">{{ $item->nombre }}</option>
                                 @endforeach
 
                             </select>
